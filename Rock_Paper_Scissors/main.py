@@ -4,7 +4,7 @@ import images
 my_choice = int(input('What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n'))
 computer_choice = random.randint(0, 2)
 
-print('You chose:')
+print(f'You chose {my_choice}')
 
 if my_choice == 0:
     images.print_rock()
@@ -13,7 +13,7 @@ elif my_choice == 1:
 elif my_choice == 2:
     images.print_scissors()
 
-print('Computer chose:')
+print(f'Computer chose {computer_choice}')
 
 if computer_choice == 0:
     images.print_rock()

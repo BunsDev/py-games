@@ -1,5 +1,7 @@
 import util
+import art
 
+print(art.logo)
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 
 if direction != 'encode' and direction != 'decode':

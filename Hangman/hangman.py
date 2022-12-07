@@ -1,28 +1,52 @@
-import random
 import util
-
-random_word = random.choice(util.word_list)
+import random
 
 end_of_game = False
-display = []
-word_length = len(random_word)
+chosen_word = random.choice(util.word_list)
+word_length = len(chosen_word)
 
+lives = 6
+
+print(f'Pssst, the solution is {chosen_word}.')
+print(f"Welcome to Hangman! You have {lives} lives total. Be careful")
+
+display = []
 for _ in range(word_length):
     display += "_"
-print(f'The word you need to guess is {word_length} letters long:\n{display}')
 
 while not end_of_game:
-    guessed_letter = input('Guess a letter:\n').lower()
 
-    for index in range(word_length):
-        letter = random_word[index]
-        if letter == guessed_letter:
-            display[index] = guessed_letter
+    if lives == 0:
+        print('You lose')
+        exit()
+
+    guess = input("Guess a letter: \n").lower()
+
+    if guess in display:
+        if lives == 0:
+            print('You lose')
+            exit()
+        else:
+            lives -= 1
+            print(f'Your lives have been decreased by 1, now you have {lives}')
+            continue
+
+    if guess not in chosen_word:
+        if lives == 0:
+            print('You lose')
+            exit()
+        else:
+            lives -= 1
+            print(f'Your lives have been decreased by 1, now you have {lives}')
+            continue
+
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = letter
+
+    print(f"{' '.join(display)}")
 
     if "_" not in display:
         end_of_game = True
-        print("You win")
-    else:
-        print(display)
-
-print(f'The word was {random_word}')
+        print("You win.")

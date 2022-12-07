@@ -9,7 +9,4 @@ if direction != 'encode' and direction != 'decode':
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-if direction == 'encode':
-    util.encrypt(text, shift)
-elif direction == 'decode':
-    util.decrypt(text, shift)
+util.caesar(text, shift, direction)

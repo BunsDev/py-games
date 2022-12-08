@@ -26,5 +26,5 @@ print(f'Your score is {score_player}.')
 choice = input('To draw another card type "y", else type "n", for the game to end')
 
 if choice == 'y':
-    # implement an add new card function
+    # implement an add new card functio
     new_card = deal_card()

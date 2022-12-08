@@ -8,7 +8,13 @@ while not stop_bidding:
     print(logo)
 
     bidder_name = input("What is your name?:\n")
-    bid_value = float(input("What is your bid?: $\n"))
+    bid_value = input("What is your bid?: $\n")
+
+    try:
+        bid_value = float(bid_value)
+    except ValueError:
+        print('The provided bid is not a number!')
+        exit()
 
     bidders[bidder_name] = bid_value
 

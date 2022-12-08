@@ -2,6 +2,7 @@ from os import system, name
 
 
 def clear():
+    """ Clears the terminal after is has been called"""
     # for windows the name is 'nt'
     if name == 'nt':
         _ = system('cls')
@@ -12,6 +13,7 @@ def clear():
 
 
 def find_highest_bidder(bidding_record):
+    """ Returns the person with the biggest bid"""
     max_bid = 0
     person_name = ''
     for bidder in bidding_record:

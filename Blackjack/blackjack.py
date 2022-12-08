@@ -1,4 +1,4 @@
-from util import calculate_score, check_for_blackjack, deal_cards, check_for_busted, print_logo
+from util import *
 
 print_logo()
 user_deck = deal_cards()
@@ -21,3 +21,10 @@ if has_busted_user:
     print(f'The user has busted! The score is {score_player}')
 elif has_busted_computer:
     print(f'The computer has busted! The score is {score_computer}')
+
+print(f'Your score is {score_player}.')
+choice = input('To draw another card type "y", else type "n", for the game to end')
+
+if choice == 'y':
+    # implement an add new card function
+    new_card = deal_card()

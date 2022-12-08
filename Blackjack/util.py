@@ -13,6 +13,11 @@ def deal_card():
     return random.choice(cards)
 
 
+def add_new_card(deck):
+    card = random.choice(cards)
+    deck.append(card)
+
+
 def deal_cards():
     deck = []
     first_card = deal_card()

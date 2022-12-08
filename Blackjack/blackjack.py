@@ -1,17 +1,23 @@
-from util import deal_card, calculate_score
+from util import calculate_score, check_for_blackjack, deal_cards, check_for_busted
 
-user_cards = []
-computer_cards = []
+user_deck = deal_cards()
+computer_deck = deal_cards()
 
-first_card_user = deal_card()
-second_card_user = deal_card()
-first_card_computer = deal_card()
-second_card_computer = deal_card()
+score_player = calculate_score(user_deck)
+score_computer = calculate_score(computer_deck)
 
-user_cards.append(first_card_user)
-user_cards.append(second_card_user)
-computer_cards.append(first_card_computer)
-computer_cards.append(second_card_computer)
+has_blackjack_user = check_for_blackjack(score_player)
+has_blackjack_computer = check_for_blackjack(score_computer)
+has_busted_user = check_for_busted(score_player)
+has_busted_computer = check_for_busted(score_computer)
 
-score_player_1 = calculate_score(user_cards)
-score_player_2 = calculate_score(computer_cards)
+if has_blackjack_user:
+    print('The user has blackjack and wins!')
+elif has_blackjack_computer:
+    print('The computer has blackjack and wins!')
+
+if has_busted_user:
+    print(f'The user has busted! The score is {score_player}')
+elif has_busted_computer:
+    print(f'The computer has busted! The score is {score_computer}')
+

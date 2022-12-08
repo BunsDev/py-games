@@ -1,1 +1,1 @@
-# TODO tomorrow implement the functionality of the game
+from replit import clear

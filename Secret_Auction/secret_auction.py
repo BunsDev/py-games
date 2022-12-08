@@ -7,8 +7,8 @@ bidders = {}
 while not stop_bidding:
     print(logo)
 
-    bidder_name = input("What is your name?\n")
-    bid_value = float(input("What is your bid?\n"))
+    bidder_name = input("What is your name?:\n")
+    bid_value = float(input("What is your bid?: $\n"))
 
     bidders[bidder_name] = bid_value
 
@@ -20,5 +20,7 @@ while not stop_bidding:
         clear()
 
 data = find_highest_bidder(bidders)
+name = data[0]
+bid = float(data[1])
 
-print(f"The highest bidder was {data[0]} with bid: ${data[1]}")
+print(f"The highest bidder was {name} with bid: ${bid}")

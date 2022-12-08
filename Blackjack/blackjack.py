@@ -1,5 +1,6 @@
-from util import calculate_score, check_for_blackjack, deal_cards, check_for_busted
+from util import calculate_score, check_for_blackjack, deal_cards, check_for_busted, print_logo
 
+print_logo()
 user_deck = deal_cards()
 computer_deck = deal_cards()
 
@@ -20,4 +21,3 @@ if has_busted_user:
     print(f'The user has busted! The score is {score_player}')
 elif has_busted_computer:
     print(f'The computer has busted! The score is {score_computer}')
-

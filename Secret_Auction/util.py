@@ -11,4 +11,12 @@ def clear():
         _ = system('clear')
 
 
-clear()
+def find_highest_bidder(bidding_record):
+    max_bid = 0
+    person_name = ''
+    for bidder in bidding_record:
+        if bidding_record[bidder] > max_bid:
+            max_bid = bidding_record[bidder]
+            person_name = bidder
+
+    return [person_name, max_bid]

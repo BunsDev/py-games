@@ -1,9 +1,8 @@
 from art import logo
-from util import clear
+from util import clear, find_highest_bidder
 
 stop_bidding = False
-max_bid = 0
-remember_bidder = ""
+bidders = {}
 
 while not stop_bidding:
     print(logo)
@@ -11,19 +10,15 @@ while not stop_bidding:
     bidder_name = input("What is your name?\n")
     bid_value = float(input("What is your bid?\n"))
 
-    bidders = {
-        bidder_name: bid_value
-    }
+    bidders[bidder_name] = bid_value
 
-    other_bidders = input("Are there other bidders? Type 'yes' or 'no'\n")
+    other_bidders = input("Are there any other bidders? Type 'yes' or 'no'.\n")
     if other_bidders == 'yes':
         clear()
     elif other_bidders == 'no':
         stop_bidding = True
         clear()
 
-    if bid_value > max_bid:
-        max_bid = bid_value
-        remember_bidder = bidder_name
+data = find_highest_bidder(bidders)
 
-print(f"The highest bidder was {remember_bidder} with bid: ${max_bid}")
+print(f"The highest bidder was {data[0]} with bid: ${data[1]}")

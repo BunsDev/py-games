@@ -50,3 +50,22 @@ def check_for_busted(score):
     if score > 21:
         return True
     return False
+
+
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        print('DRAW')
+    elif user_score == 0:
+        print('Player Wins!')
+    elif computer_score == 0:
+        print('Computer Wins!')
+
+    check_player = check_for_busted(user_score)
+
+    if check_player:
+        print('Computer Wins!')
+
+    check_computer = check_for_busted(computer_score)
+
+    if check_computer:
+        print('Player Wins!')

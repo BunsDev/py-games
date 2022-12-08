@@ -1,71 +1,38 @@
 import random
-import art
 
 
-def print_logo():
-    print(art.logo)
+def calculate_score(cards):
+    """Take a list of cards and return the score calculated from the cards"""
 
-
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-
-
-def deal_card():
-    return random.choice(cards)
-
-
-def add_new_card(deck):
-    card = random.choice(cards)
-    deck.append(card)
-
-
-def deal_cards():
-    deck = []
-    first_card = deal_card()
-    second_card = deal_card()
-    deck.append(first_card)
-    deck.append(second_card)
-    return deck
-
-
-def check_for_blackjack(score):
-    if score == 21:
-        return True
-    return False
-
-
-def calculate_score(deck):
-    sum_score = sum(deck)
-
-    # 0 will represent blackjack
-    if sum_score == 21:
+    if sum(cards) == 21 and len(cards) == 2:
         return 0
-    # There is a case where the player can get two aces. In this case The dealer will remove one ace and replace it with 1
-    elif sum_score > 21:
-        sum_score -= 10
-
-    return sum(deck)
-
-
-def check_for_busted(score):
-    if score > 21:
-        return True
-    return False
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)
+    return sum(cards)
 
 
 def compare(user_score, computer_score):
+    if user_score > 21 and computer_score > 21:
+        return "You went over. You lose 😤"
+
     if user_score == computer_score:
-        print('DRAW')
-    elif user_score == 0:
-        print('Player Wins!')
+        return "Draw 🙃"
     elif computer_score == 0:
-        print('Computer Wins!')
+        return "Lose, opponent has Blackjack 😱"
+    elif user_score == 0:
+        return "Win with a Blackjack 😎"
+    elif user_score > 21:
+        return "You went over. You lose 😭"
+    elif computer_score > 21:
+        return "Opponent went over. You win 😁"
+    elif user_score > computer_score:
+        return "You win 😃"
+    else:
+        return "You lose 😤"
 
-    check_player = check_for_busted(user_score)
 
-    if check_player:
-        print('Computer Wins!')
-
-    check_computer = check_for_busted(computer_score)
-
-    if check_computer:
-        print('Player Wins!')
+def deal_card():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card

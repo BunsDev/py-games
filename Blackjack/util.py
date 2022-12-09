@@ -13,6 +13,7 @@ def calculate_score(cards):
 
 
 def compare(user_score, computer_score):
+    """" Takes two scores and returns message depending on who wins"""
     if user_score > 21 and computer_score > 21:
         return "You went over. You lose 😤"
 
@@ -33,6 +34,7 @@ def compare(user_score, computer_score):
 
 
 def deal_card():
+    """Returns random card from a list of numbers"""
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     card = random.choice(cards)
     return card
